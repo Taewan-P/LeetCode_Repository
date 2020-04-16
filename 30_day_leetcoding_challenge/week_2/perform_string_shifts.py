@@ -10,5 +10,6 @@ class Solution:
 
     n = left-right
     if (abs(n) > len(s)):
+      # Shifting amount == string length -> nothing changes
       n = n % len(s) 
     return s[n:] + s[:n]
