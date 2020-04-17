@@ -16,7 +16,7 @@ class Solution:
         # Backspace
         if (len(result) != 0):
           result.pop(-1)
-        else:
+      else:
           result.append(i)
 
     return result
