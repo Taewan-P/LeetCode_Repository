@@ -5,7 +5,6 @@ class Solution:
         tmp = ""
         result = ""
         
-        count = False
         for i in list(s):
             if i == "[" and stack == []:
                 stack.append(i)
@@ -14,7 +13,6 @@ class Solution:
                 stack.append(i)
                 tmp += i
             elif i == "]" and len(stack) == 1:
-                count = True
                 stack.pop()
                 tmp += "!"
                 tmp += "/"
