@@ -17,7 +17,7 @@ class Solution:
                 if cur.next:
                     # If next node is available
                     if cur.next.val == val:
-                        # If next value if the element
+                        # If next value is the element
                         if cur.next.next:
                             # If next next value is available, link current node with next next node.
                             cur.next = cur.next.next
