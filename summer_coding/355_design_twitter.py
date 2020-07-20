@@ -7,21 +7,26 @@ class Twitter:
         """
         self.db = dict()
 
+    def createUser(self, userId: int) -> None:
+        basic = dict()
+        basic["tweets"] = []
+        basic["following"] = []
+        self.db[userId] = basic
+
 
     def postTweet(self, userId: int, tweetId: int) -> None:
         """
         Compose a new tweet.
+        Tweet form : (tweetId, timestamp)
+        ex) object.postTweet(1,5) -> [(5, 1594994021.252249)]
         """
         tweet = (tweetId, time.time())
         if self.db.get(userId) != None:
             # User exists
             self.db[userId]["tweets"].append(tweet)
         else:
-            # User doesn't exist
-            basic = dict()
-            basic["tweets"] = []
-            basic["following"] = []
-            self.db[userId] = basic
+            # User doesn't exist. Create User
+            self.createUser(userId)
             self.db[userId]["tweets"].append(tweet)
         
 
@@ -41,9 +46,9 @@ class Twitter:
 
         if follower:
             for i in follower:
-                tmp = self.db.get(i)
-                if tmp != None:
-                    tweets = list(self.db.get(i).get("tweets"))
+                tmp_user = self.db.get(i)
+                if tmp_user != None:
+                    tweets = list(tmp_user.get("tweets"))
                     follower_tweets += [t for t in tweets]
         
         total_tweets = user_tweets + follower_tweets
@@ -58,11 +63,8 @@ class Twitter:
         Follower follows a followee. If the operation is invalid, it should be a no-op.
         """
         if (self.db.get(followerId) == None):
-            # User doesn't exist
-            basic = dict()
-            basic["tweets"] = []
-            basic["following"] = []
-            self.db[followerId] = basic
+            # User doesn't exist. Create User (This doesn't make sense)
+            self.createUser(followerId)
             self.db[followerId]["following"].append(followeeId)
             return None
             
@@ -78,12 +80,8 @@ class Twitter:
         
         self.db[followerId]["following"].append(followeeId)
         if (self.db.get(followeeId) == None):
-            # User doesn't exist
-            basic = dict()
-            basic["tweets"] = []
-            basic["following"] = []
-            self.db[followeeId] = basic
-            return None
+            # User doesn't exist. Create User
+            return self.createUser(followeeId)
         
         
 
