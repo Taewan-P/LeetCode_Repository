@@ -19,6 +19,8 @@ class Twitter:
         Compose a new tweet.
         Tweet form : (tweetId, timestamp)
         ex) object.postTweet(1,5) -> [(5, 1594994021.252249)]
+
+        db: dict - {1 : {"tweets" : [(5, 1594994021.252249),(6, 1594994021.300000)], "followers" : [2]}}
         """
         tweet = (tweetId, time.time())
         if self.db.get(userId) != None:
