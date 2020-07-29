@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from TreeNode import *
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         result = []

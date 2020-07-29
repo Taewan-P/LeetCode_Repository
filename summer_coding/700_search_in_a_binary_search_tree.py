@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from TreeNode import *
 class Solution:
     def searchBST(self, root: TreeNode, val: int) -> TreeNode:
         if root == None:

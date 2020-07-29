@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from TreeNode import *
 class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         return self.treeToList(p) == self.treeToList(q)

@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from TreeNode import *
 class Solution:
     def recoverFromPreorder(self, S: str) -> TreeNode:
         s = S.split("-") # s = ['1', '2', '', '3', '', '4', '5', '', '6', '', '7']
