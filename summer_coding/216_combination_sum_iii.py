@@ -5,8 +5,7 @@ class Solution:
         for tup in combinations([_ for _ in range(1,10)], k):
             t = sorted(list(tup))
             if sum(tup) == n:
-                if len(set(tup)) == len(tup):
-                    if not t in result:
-                        result.append(t)
+                if not t in result:
+                    result.append(t)
                     
         return result
