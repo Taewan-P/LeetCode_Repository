@@ -18,14 +18,7 @@ class Solution:
         right_preorder = preorder[1+len(left_inorder):]
         
         tree = TreeNode(preorder[0])
-        if len(left_inorder) == 1:
-            tree.left = TreeNode(left_inorder[0])
-        else:
-            tree.left = self.buildTree(left_preorder, left_inorder)
-            
-        if len(right_inorder) == 1:
-            tree.right = TreeNode(right_inorder[0])
-        else:
-            tree.right = self.buildTree(right_preorder, right_inorder)
+        tree.left = TreeNode(left_inorder[0]) if len(left_inorder) == 1 else self.buildTree(left_preorder, left_inorder)
+        tree.right = TreeNode(right_inorder[0]) if len(right_inorder) == 1 else self.buildTree(right_preorder, right_inorder)
         
         return tree
